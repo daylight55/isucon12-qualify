@@ -13,7 +13,8 @@ CURRENT_DIR=$(cd $(dirname $0);pwd)
 cd ${CURRENT_DIR}
 
 cat ./admin/10_schema.sql tenant/10_schema.sql | \
-mysql -u"root" \
+mysql -u"$ISUCON_DB_USER" \
+		-p"$ISUCON_DB_PASSWORD" \
 		--host "$ISUCON_DB_HOST" \
 		--port "$ISUCON_DB_PORT" \
 		"$ISUCON_DB_NAME"
