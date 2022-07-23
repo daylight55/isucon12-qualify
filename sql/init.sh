@@ -9,6 +9,9 @@ ISUCON_DB_USER=${ISUCON_DB_USER:-isucon}
 ISUCON_DB_PASSWORD=${ISUCON_DB_PASSWORD:-isucon}
 ISUCON_DB_NAME=${ISUCON_DB_NAME:-isuports}
 
+CURRENT_DIR=$(cd $(dirname $0);pwd)
+cd ${CURRENT_DIR}
+
 cat ./admin/01_create_mysql_database.sql ./admin/10_Schema.sql tenant/10_Schema.sql | \
 mysql -u"$ISUCON_DB_USER" \
 		-p"$ISUCON_DB_PASSWORD" \
