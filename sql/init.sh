@@ -12,12 +12,13 @@ ISUCON_DB_NAME=${ISUCON_DB_NAME:-isuports}
 CURRENT_DIR=$(cd $(dirname $0);pwd)
 cd ${CURRENT_DIR}
 
-# cat ./admin/01_create_mysql_database.sql ./admin/10_schema.sql tenant/10_schema.sql | \
-# mysql -u"$ISUCON_DB_USER" \
-# 		-p"$ISUCON_DB_PASSWORD" \
-# 		--host "$ISUCON_DB_HOST" \
-# 		--port "$ISUCON_DB_PORT" \
-# 		"$ISUCON_DB_NAME"
+cat ./admin/01_create_mysql_database.sql ./admin/10_schema.sql tenant/10_schema.sql | \
+mysql --defaults-file=/dev/null \
+		-u"$ISUCON_DB_USER" \
+		-p"$ISUCON_DB_PASSWORD" \
+		--host "$ISUCON_DB_HOST" \
+		--port "$ISUCON_DB_PORT" \
+		"$ISUCON_DB_NAME"
 
 # MySQLを初期化
 mysql -u"$ISUCON_DB_USER" \
